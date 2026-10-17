@@ -17,6 +17,12 @@
     flake-parts.lib.mkFlake {inherit inputs;}
     {
       systems = ["x86_64-linux" "aarch64-darwin"];
+
+      flake.nixosModules = {
+        amaru = import ./nix/modules/amaru.nix;
+        default = import ./nix/modules/amaru.nix;
+      };
+
       perSystem = {
         system,
         ...
